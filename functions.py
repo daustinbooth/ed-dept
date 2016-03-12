@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
-"""Some fun work with functions."""
+"""Some fun work with functions.
+
+We can find even numbers.
+"""
 
 import sys
 
