@@ -7,8 +7,6 @@ Documentation          This example demonstrates executing commands on a remote 
 
 Library                SSHLibrary
 Library                OperatingSystem
-#Suite Setup            Open Connection And Log In
-#Suite Teardown         Close All Connections
 
 *** Variables ***
 
