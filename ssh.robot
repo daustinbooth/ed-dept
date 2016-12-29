@@ -7,10 +7,9 @@ Documentation          This example demonstrates executing commands on a remote 
 
 Library                SSHLibrary
 Library                OperatingSystem
-
+Library                String
 *** Variables ***
 
-${servers}             Run Keyword    servers.txt    Get File
 ${USERNAME}            root
 ${PASSWORD}            gundog
 
@@ -19,7 +18,9 @@ Execute Command And Verify Output
     [Documentation]    Execute Command can be used to ran commands on the remote machine.
     ...                The keyword returns the standard output by default.
 
-    :FOR    ${addr}   IN    ${servers}
+    ${filecontent}=        OperatingSystem.Get File     /root/servers.txt
+    @{servers}=            Split To Lines    ${filecontent}
+    :FOR    ${addr}   IN    @{servers}
     \    Open Connection    ${addr}
     \    Login    ${USERNAME}    ${PASSWORD}
     \    ${output}=    Execute Command    cat /etc/passwd | cut -d: -f3
